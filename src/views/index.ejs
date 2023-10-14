@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blade Terminal - Terminal</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body platform="<%= platform %>">
+    <div class="overlay" id="overlay">
+      <div class="overlay-content">
+        <div class="loader"></div>
+      </div>
+    </div>
+    <div class="terminal" id="output">
+      <p>Welcome to Blade Terminal 1.0 LTS (GNU/<%= platform %>)</p>
+      <p># Platform: <span id="platform"><%= platform %></span></p>
+      <p>
+        * Documentation:
+        <a href="https://github.com/StunsIO/BladeTerminal"
+          >https://github.com/StunsIO/BladeTerminal</a
+        >
+      </p>
+      <p>
+        * Commands Documentation:
+        <a id="cdoc" href=""></a>
+      </p>
+      <p>
+        * Support:
+        <a href="https://stuns.io/support">https://stuns.io/support</a>
+      </p>
+      <br />
+      <p>Credits:</p>
+      <p>
+        <a href="https://github.com/StunsIO" target="_blank" class="iconsO">
+          <i class="material-icons middle-v">account_circle</i>
+          GitHub
+        </a>
+      </p>
+      <p>
+        <a
+          href="https://www.linkedin.com/company/stunsio"
+          target="_blank"
+          class="iconsO"
+        >
+          <i class="material-icons middle-v">account_circle</i>
+          LinkedIn
+        </a>
+      </p>
+      <br />
+      <p><strong>User Agent:</strong> <span id="userAgent"></span></p>
+      <p><strong>User IP:</strong> <span id="userIp"></span></p>
+      <p id="lastLogin"></p>
+    </div>
+    <div class="input-container">
+      <input type="text" id="command" placeholder="Enter a command" />
+      <button onclick="sendCommand()">Submit</button>
+      <button onclick="getServerInfo()">Get Server Info</button>
+    </div>
+    <!-- Popup div for server info -->
+    <div id="serverInfoPopup" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closeServerInfoPopup()">&times;</span>
+        <div id="serverInfo"></div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

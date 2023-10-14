@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blade Terminal - Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="input-container">
+      <input
+        type="password"
+        id="token"
+        placeholder="Enter The Token"
+        required
+      />
+      <button id="loginButton">Access</button>
+    </div>
+
+    <script>
+      document
+        .getElementById("loginButton")
+        .addEventListener("click", function () {
+          login();
+        });
+
+      document
+        .getElementById("token")
+        .addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            login();
+          }
+        });
+
+      function login() {
+        var token = document.getElementById("token").value;
+
+        fetch("/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token: token }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              window.location.href = "/";
+            } else {
+              alert(data.message);
+            }
+          });
+      }
+    </script>
+  </body>
+</html>
